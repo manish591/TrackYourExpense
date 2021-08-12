@@ -151,3 +151,30 @@ strong {
 .totalexpense {
     margin-right: 5px;
 }
+
+@media only screen and (min-width: 700px) {
+    .maincontainer {
+        width: 50vw;
+        margin: 15vh auto;
+    }
+
+    .title, .total {
+        font-size: 1.3rem;
+    }
+
+    .navigation {
+        padding: 15px 20px;
+    }
+
+    .amountspend, .amountspenton {
+        padding: 18px 15px;
+    }
+
+    .addtolist {
+        padding: 18px 10px;
+    }
+
+    span {
+        padding: 17px 10px;
+    }
+}
