@@ -11,16 +11,16 @@
     <div class="container">
       <nav class="navigation">
         <p class="title">Expense Tracker</p>
-        <p class="total">Total: 50000</p>
+        <p class="total">Total: <strong class="totalexpense">0</strong></p>
       </nav>
 
       <main class="maincontainer">
         <section class="inputfields">
           <div class="amountspendfield">
             <input
-              type="text"
+              type="number"
               class="amountspend"
-              placeholder="Input amount spend here"/>
+              placeholder="Input amount spend here" min="1"/>
             <span class="rupeessign">₹</span>
           </div>
           <div class="amountspentdescription">
@@ -43,11 +43,12 @@
       <footer class="socialmediasection">
         <p class="cta">Find Me On</p>
         <ul class="socialhandles">
-          <li>LinkedIn</li>
-          <li>Github</li>
-          <li>Twitter</li>
+          <li><a href="https://www.linkedin.com/in/manishdevrani77/">LinkedIn</a></li>
+          <li><a href="https://github.com/manish591">Github</a></li>
+          <li><a href="https://twitter.com/manishdevrani77">Twitter</a></li>
         </ul>
       </footer>
     </div>
+    <script src="/app.js"></script>
   </body>
 </html>

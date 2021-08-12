@@ -99,6 +99,15 @@ li {
     margin-left: 10px;
 }
 
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+li a {
+    color: var(--main-clr);
+}
+
 ul {
     list-style: none;
 }
@@ -137,4 +146,8 @@ strong {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+.totalexpense {
+    margin-right: 5px;
 }
