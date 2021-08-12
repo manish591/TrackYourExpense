@@ -1,40 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Track your expenses</title>
-</head>
-<body>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
     <div class="container">
-        <nav class="navigation">
-            <p class="title">Your expense tracker</p>
-            <p class="total">Total: 50000</p>
-        </nav>
+      <nav class="navigation">
+        <p class="title">Expense Tracker</p>
+        <p class="total">Total: 50000</p>
+      </nav>
+
+      <main class="maincontainer">
         <section class="inputfields">
-            <div class="amountspendfield">
-                <input type="text" class="amountspend" placeholder="Input amount spend here">
-                <span class="rupeessign">₹</span>
-            </div>
-            <div class="amountspentdescription">
-                <input type="text" class="amountspenton" placeholder="spent on">
-                <button class="addtolist">Add</button>
-            </div>
+          <div class="amountspendfield">
+            <input
+              type="text"
+              class="amountspend"
+              placeholder="Input amount spend here"/>
+            <span class="rupeessign">₹</span>
+          </div>
+          <div class="amountspentdescription">
+            <input type="text" class="amountspenton" placeholder="spent on" />
+            <button class="addtolist">Add</button>
+          </div>
         </section>
         <section class="expenselistcontainer">
-            <ul class="expenselist">
-
-            </ul>
+          <ul class="expenselist"></ul>
         </section>
-        <footer class="socialmediasection">
-            <p class="cta">Find Me On</p>
-            <ul class="socialhandles">
-                <li>Linked In</li>
-                <li>Github</li>
-                <li>Twitter</li>
-            </ul>
-        </footer>
+      </main>
+      <footer class="socialmediasection">
+        <p class="cta">Find Me On</p>
+        <ul class="socialhandles">
+          <li>Linked In</li>
+          <li>Github</li>
+          <li>Twitter</li>
+        </ul>
+      </footer>
     </div>
-</body>
+  </body>
 </html>

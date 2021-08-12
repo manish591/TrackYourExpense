@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-clr: #EEF3F9;
+    --secondary-clr: #1C262F;
+    --clr1: #36526D;
+    --clr2: #BB4170;
+}
+
+body {
+    background-color: var(--main-clr);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.maincontainer {
+    width: 90vw;
+    margin: 10vh auto;
+    border: 1px solid black;
+    padding: 15px 10px;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    background-color: var(--secondary-clr);
+    color: var(--main-clr);
+    padding: 15px 10px;
+}
+
+.title, .total {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+span {
+  border: 1px solid black;
+  padding: 0px 10px;
+  background-color: var(--clr2);
+  color: var(--main-clr);
+}
+
+.inputfields {
+    display: flex;
+    flex-direction: column;
+}
+
+.amountspend, .amountspenton {
+    height: 5vh;
+    width: 80%;
+    padding: 5px;
+}
+
+.amountspendfield {
+    margin-bottom: 3vh;
+}
+
+.addtolist {
+    padding: 10px 10px;
+    background-color: var(--clr2);
+    color: var(--main-clr);
+    border: none;
+}
+
+.socialmediasection {
+    background-color: var(--secondary-clr);
+    margin-bottom: 0;
+}
