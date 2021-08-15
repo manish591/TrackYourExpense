@@ -3,6 +3,11 @@ const inputAmountSpend = document.querySelector(".amountspend");
 const inputAmountDescription = document.querySelector(".amountspenton");
 const addButton = document.querySelector(".addtolist");
 const expenseListInView = document.querySelector(".expenselist");
+const deleteButton = document.querySelector('.delete');
+const list = document.querySelector('.list');
+
+
+let valueInView = 0;
 
 addButton.addEventListener("click", addExpensesToTheList);
 
@@ -34,7 +39,6 @@ function createExpenseLists(rupees, name) {
 }
 
 function updateTotalValue(amountGiven, total) {
-    let valueInView = Number(total.innerText);
-    let calculation = valueInView += amountGiven;
-    total.innerText = `${calculation}`
+    valueInView = valueInView + amountGiven;
+    total.innerText = `${valueInView}`
 }

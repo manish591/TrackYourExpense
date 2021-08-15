@@ -152,6 +152,10 @@ strong {
     margin-right: 5px;
 }
 
+.hide {
+    display: none;
+}
+
 @media only screen and (min-width: 700px) {
     .maincontainer {
         width: 50vw;
