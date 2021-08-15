@@ -4,15 +4,17 @@ const inputAmountDescription = document.querySelector(".amountspenton");
 const addButton = document.querySelector(".addtolist");
 const expenseListInView = document.querySelector(".expenselist");
 const deleteButton = document.querySelector('.delete');
-const list = document.querySelector('.list');
+
 
 
 let valueInView = 0;
+let expenseArray = [];
 
 addButton.addEventListener("click", addExpensesToTheList);
 
 
 function addExpensesToTheList() {
+  let expenseObj = {};
   let amount = Number(inputAmountSpend.value);
   let amountDescription = inputAmountDescription.value;
 
@@ -22,8 +24,12 @@ function addExpensesToTheList() {
       return console.log('Please input a valid value!');
   }
 
+  expenseObj.amount = amount;
+  expenseObj.description = amountDescription;
+
+  expenseArray.push(expenseObj);
   createExpenseLists(amount, amountDescription);
-  updateTotalValue(amount, totalExpense)
+  updateTotalValue(amount, totalExpense);
 }
 
 function createExpenseLists(rupees, name) {
