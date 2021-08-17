@@ -156,6 +156,14 @@ strong {
     display: none;
 }
 
+.date {
+    background-color: unset;
+    color: unset;
+    padding: unset;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .7rem;
+}
+
 @media only screen and (min-width: 700px) {
     .maincontainer {
         width: 50vw;
