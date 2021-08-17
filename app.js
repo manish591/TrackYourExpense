@@ -9,7 +9,6 @@ const deleteButton = document.querySelector('.delete');
 
 let valueInView = 0;
 let expenseArray = [];
-let newExpenseArray = [];
 const options = {year: 'numeric', month: 'long', day: 'numeric' };
 
 addButton.addEventListener("click", addExpensesToTheList);
@@ -32,12 +31,9 @@ function addExpensesToTheList() {
 
   expenseArray.push(expenseObj);
 
-  let arrayListItems = expenseArray.map(item => createExpenseLists(item.amount, item.description, item.moment))
-  let joinedList = arrayListItems.join("");
-
+  renderItems(expenseArray)
 
   updateTotalValue(amount, totalExpense);
-  expenseListInView.innerHTML = joinedList;
 }
 
 function createExpenseLists(rupees, name, moment) {
@@ -66,10 +62,19 @@ function renderItems(arr) {
 }
 
 function deleteItemFromList(dateValue) {
+  let newExpenseArray = [];
   for(let i = 0; i < expenseArray.length; i++) {
     if(expenseArray[i].moment.valueOf() !== dateValue) {
       newExpenseArray.push(expenseArray[i]);
-    }
+    } 
+
+    if(expenseArray[i].moment.valueOf() === dateValue) {
+      valueInView = valueInView - expenseArray[i].amount;
+      totalExpense.innerText = `${valueInView}`
+    } 
+
   }
+
   renderItems(newExpenseArray);
+  expenseArray =  newExpenseArray;
 }
