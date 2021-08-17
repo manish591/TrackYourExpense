@@ -9,6 +9,7 @@ const deleteButton = document.querySelector('.delete');
 
 let valueInView = 0;
 let expenseArray = [];
+let newExpenseArray = [];
 const options = {year: 'numeric', month: 'long', day: 'numeric' };
 
 addButton.addEventListener("click", addExpensesToTheList);
@@ -48,7 +49,7 @@ function createExpenseLists(rupees, name, moment) {
         </div>
         <div class="other">
           <strong>${rupees}</strong>
-          <button class="delete">x</button>
+          <button class="delete" onclick="deleteItemFromList(${moment.valueOf()})">x</button>
         </div>
       </div>`;
 }
@@ -56,4 +57,19 @@ function createExpenseLists(rupees, name, moment) {
 function updateTotalValue(amountGiven, total) {
     valueInView = valueInView + amountGiven;
     total.innerText = `${valueInView}`
+}
+
+function renderItems(arr) {
+  let arrayListItems = arr.map(item => createExpenseLists(item.amount, item.description, item.moment))
+  let joinedList = arrayListItems.join("");
+  expenseListInView.innerHTML = joinedList;
+}
+
+function deleteItemFromList(dateValue) {
+  for(let i = 0; i < expenseArray.length; i++) {
+    if(expenseArray[i].moment.valueOf() !== dateValue) {
+      newExpenseArray.push(expenseArray[i]);
+    }
+  }
+  renderItems(newExpenseArray);
 }
