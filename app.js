@@ -7,8 +7,9 @@ const deleteButton = document.querySelector('.delete');
 
 // localStorage.clear();
 
-let valueInView = 0;
+
 let expenseArray = JSON.parse(localStorage.getItem("list")) || [];
+let valueInView = localStorage.getItem('total') || 0;
 const options = {year: 'numeric', month: 'long', day: 'numeric' };
 
 addButton.addEventListener("click", addExpensesToTheList);
@@ -35,6 +36,7 @@ function addExpensesToTheList() {
 
   updateTotalValue(amount, totalExpense);
   window.localStorage.setItem('list', JSON.stringify(expenseArray));
+  window.localStorage.setItem('total', valueInView);
 }
 
 function createExpenseLists(rupees, name, period) {
@@ -73,13 +75,18 @@ function deleteItemFromList(dateValue) {
 
   renderItems(expenseArray);
   window.localStorage.setItem('list', JSON.stringify(expenseArray));
+  // window.localStorage.setItem('total', valueInView);
 }
 
 function getValue() {
   let storedListItems = window.localStorage.getItem('list');
-  if (storedListItems) {
+  let storedTotalValue = window.localStorage.getItem('total');
+  if (storedListItems !== null) {
     expenseArray = JSON.parse(storedListItems);
+    valueInView = parseFloat(storedTotalValue);
+    console.log(storedTotalValue)
     renderItems(expenseArray);
+    totalExpense.innerText = `${valueInView}`;
   }
 }
 
