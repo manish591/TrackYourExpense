@@ -5,14 +5,14 @@ const addButton = document.querySelector(".addtolist");
 const expenseListInView = document.querySelector(".expenselist");
 const deleteButton = document.querySelector('.delete');
 
+// localStorage.clear();
 
 
-let valueInView = 0;
-let expenseArray = [];
+let expenseArray = JSON.parse(localStorage.getItem("list")) || [];
+let valueInView = localStorage.getItem('total') || 0;
 const options = {year: 'numeric', month: 'long', day: 'numeric' };
 
 addButton.addEventListener("click", addExpensesToTheList);
-
 
 function addExpensesToTheList() {
   let expenseObj = {};
@@ -28,24 +28,27 @@ function addExpensesToTheList() {
   expenseObj.amount = amount;
   expenseObj.description = amountDescription;
   expenseObj.moment = new Date();
+  expenseObj.id = new Date().getTime();
 
   expenseArray.push(expenseObj);
 
-  renderItems(expenseArray)
+  renderItems(expenseArray);
 
   updateTotalValue(amount, totalExpense);
+  window.localStorage.setItem('list', JSON.stringify(expenseArray));
+  window.localStorage.setItem('total', valueInView);
 }
 
-function createExpenseLists(rupees, name, moment) {
+function createExpenseLists(rupees, name, period) {
     return `
-      <div class="list"> 
+      <div class="list">
         <div class="listtitle">
           <p class="name">${name}</p>
-          <span class="date">${moment.toLocaleDateString('en-US', options)}</span>
+          <span class="date">${period}</span>
         </div>
         <div class="other">
           <strong>${rupees}</strong>
-          <button class="delete" onclick="deleteItemFromList(${moment.valueOf()})">x</button>
+          <button class="delete" onclick="deleteItemFromList(${period})">X</button>
         </div>
       </div>`;
 }
@@ -56,25 +59,36 @@ function updateTotalValue(amountGiven, total) {
 }
 
 function renderItems(arr) {
-  let arrayListItems = arr.map(item => createExpenseLists(item.amount, item.description, item.moment))
+  let arrayListItems = arr.map(item => createExpenseLists(item.amount, item.description, item.id))
   let joinedList = arrayListItems.join("");
   expenseListInView.innerHTML = joinedList;
 }
 
 function deleteItemFromList(dateValue) {
-  let newExpenseArray = [];
   for(let i = 0; i < expenseArray.length; i++) {
-    if(expenseArray[i].moment.valueOf() !== dateValue) {
-      newExpenseArray.push(expenseArray[i]);
-    } 
-
-    if(expenseArray[i].moment.valueOf() === dateValue) {
+    if(expenseArray[i].id === dateValue) {
       valueInView = valueInView - expenseArray[i].amount;
-      totalExpense.innerText = `${valueInView}`
+      totalExpense.innerText = `${valueInView}`;
+      expenseArray.splice(i, 1);
     } 
-
   }
 
-  renderItems(newExpenseArray);
-  expenseArray =  newExpenseArray;
+  renderItems(expenseArray);
+  window.localStorage.setItem('list', JSON.stringify(expenseArray));
+  // window.localStorage.setItem('total', valueInView);
 }
+
+function getValue() {
+  let storedListItems = window.localStorage.getItem('list');
+  let storedTotalValue = window.localStorage.getItem('total');
+  if (storedListItems !== null) {
+    expenseArray = JSON.parse(storedListItems);
+    valueInView = parseFloat(storedTotalValue);
+    console.log(storedTotalValue)
+    renderItems(expenseArray);
+    totalExpense.innerText = `${valueInView}`;
+  }
+}
+
+getValue();
+
