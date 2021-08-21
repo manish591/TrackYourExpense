@@ -75,7 +75,7 @@ function deleteItemFromList(dateValue) {
 
   renderItems(expenseArray);
   window.localStorage.setItem('list', JSON.stringify(expenseArray));
-  // window.localStorage.setItem('total', valueInView);
+  window.localStorage.setItem('total', valueInView);
 }
 
 function getValue() {
